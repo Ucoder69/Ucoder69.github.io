@@ -12,8 +12,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 50px;
+    padding: 500px;
     color: #333;
     background-color: #f2f2f2;
 }
