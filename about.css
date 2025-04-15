@@ -4,23 +4,30 @@
     padding: 0;
     border: 0;
     font-family: "Roboto", sans-serif;
-    background-color: beige;
 }
-h1{
-    font-size: 1.95rem;
-    
+html{
+    background-color: whitesmoke;
+}
+header{
     margin: 0.5rem 0.5rem 1rem ;
     padding: 1rem 0.5rem;
     padding-left: 0.5rem;
     border: 3px;
     border-radius: 12px;
-    background: linear-gradient( to right, rgba(108, 196, 255, 0.726) , wheat );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient( to right, rgba(105, 191, 248, 0.726) , wheat );
     border-style: solid rgb(230, 230, 230);
+    
+}
+header h1{
+    margin: 0;
     color: rgb(248, 132, 132);
+    font-size: 1.95rem;
 }
 h2{
-    margin: 1rem 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem;
     padding: 1rem 0.5rem;
     font-family: "Noto Sans", sans-serif;
 }
@@ -30,7 +37,6 @@ h2{
     font-family: "Noto Sans", sans-serif;
 }
 ul li{
-    font-size: 1rem;
     margin: 1rem;
     /* line-height: 10%; */
     padding: 0.7em;
@@ -54,4 +60,57 @@ hr{
 }
 footer{
     text-align: center;
+}
+
+.btn-img{
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: inherit;
+    overflow: hidden;
+}
+.right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 10px 16px;
+    border-radius: 50px; /* fully rounded */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+.right button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.right button:hover, .right button:focus{
+    background-color: red;
+}
+  
+.right img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* circular image */
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.invisible-link {
+    all: unset; /* removes all default link styles */
+    display: inline-block; /* keeps layout behavior */
+}
+  
+.invisible-link:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
