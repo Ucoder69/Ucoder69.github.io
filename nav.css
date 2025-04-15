@@ -1,0 +1,38 @@
+header{
+    margin: 0.5rem 0.5rem 1rem ;
+    padding: 1rem 0.5rem;
+    padding-left: 0.5rem;
+    border: 3px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient( to right, rgba(105, 191, 248, 0.726) , wheat );
+    border-style: solid rgb(230, 230, 230);
+}
+header h1{
+    margin: 0;
+    color: rgb(248, 132, 132);
+    font-size: 1.95rem;
+}   
+.nav-list{
+    display: flex;
+    gap: 0.2rem;
+    margin:0;
+}
+.nav-link{
+    list-style: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    background: inherit;
+    border: 0;
+    padding: 0.4rem;
+    margin: 0.5rem;
+    margin-left: 0.2rem;
+    
+}
+.nav-link a{
+    text-decoration: none;
+    color: white;
+}
