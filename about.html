@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Suparno">
     <meta name="description" content="this is an about me page">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="shortcut icon" href="fs.png" type="image/x-icon">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
@@ -17,6 +17,12 @@
 <body>
   <header>
     <h1>ABOUT ME</h1>
+    <nav aria-label="primary-navigation" >
+      <ul class="nav-list">
+        <li class="nav-link"><a href="index.html">HOME</a></li>
+        <li class="nav-link"><a href="contact me.html">CONTACT ME</a></li>
+      </ul>
+  </nav>
   </header>
   <main>
       <h2>Who am I?</h2>
@@ -25,20 +31,18 @@
       <p ><ul >
             <li>I have also learing c++ to fuel my imagination to make games.</li>
             <li>I am honing my skill on python and have <strong>created applications</strong> based on this language.</li>
-            <li>i am also learning html and css trying to improve my web developmwnt skills.</li>
-            <li>i have also been learning and honing my musical skills in mandolin for over 5 years, having performed in an audience many times in the past. </li>
+            <li>I am also learning html and css trying to improve my web developmwnt skills.</li>
+            <li>I have also been learning and honing my musical skills in mandolin for over 5 years, having performed in an audience many times in the past. </li>
       </ul></p>
       <hr>
       <p class="para">
         contact me at <a href="mailto:abc1123@gmail.com">my email(not working)</a>
       </p>
+      <hr>
     </main>
-    <hr>
     <footer>
       &copy;2025 Ugamer
-      
-      <p><a href="index.html">Back to Home</a></p>
-      <a href="#">Back to top</a></button>
+      <div class="right"><a href="#"class="invisible-link" tabindex="-1"><button type="button"><img class="btn-img"src="./arrow_upward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="up arrow"></button></a></div>
     </footer>
 </body>
 </html>
