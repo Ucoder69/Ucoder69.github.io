@@ -1,5 +1,5 @@
 header{
-    margin: 0.5rem 0.5rem 1rem ;
+    margin: 1rem 0.5rem 1rem ;
     padding: 1rem 0.5rem;
     padding-left: 0.5rem;
     border: 3px;
@@ -7,12 +7,13 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient( to right, rgba(105, 191, 248, 0.726) , wheat );
+    /* background: linear-gradient( to right, rgba(105, 191, 248, 0.726) , wheat ); */
+    background: linear-gradient( to bottom right, #1e1a2e, #5c4f6e, #b3a8c9);
     border-style: solid rgb(230, 230, 230);
 }
 header h1{
     margin: 0;
-    color: rgb(248, 132, 132);
+    color: #b3a8c9;
     font-size: 1.95rem;
 }   
 .nav-list{
@@ -34,5 +35,9 @@ header h1{
 }
 .nav-link a{
     text-decoration: none;
-    color: white;
+    color: whitesmoke;
+}
+
+.nav-link a:hover, .nav-link a:focus{
+    color: #1e1a2e;
 }
