@@ -2,20 +2,20 @@
     margin:0;
     padding:0;
     box-sizing: content-box;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
 }
 html{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    background: #b3a8c9;
+    background: #f4f6fb;
+
 }
 body {
     font-family: Arial, sans-serif;
     margin: 5px;
     padding: 5px;
-    color: #333;
+    color: whitesmoke;
 }
 
 .container {
@@ -27,16 +27,60 @@ header h1 {
     margin: 0;
     padding: 0 20px;
 }
-
-main {
-    padding: 20px 0;
-}
-
 footer {
     text-align: center;
+    color: black;
     padding: 10px 0;
 }
+
 /* Add a hover effect to the buttons */
 button:hover {
     background-color: #45a049;
+}
+.info-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    /* gap: .3rem; */
+    margin: 1rem;
+}
+.intro{
+    background: linear-gradient( to bottom right, #1e1a2e, #5c4f6e, #b3a8c9);
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: .4rem;
+    padding: 0.7rem;
+}
+.skill{
+    background: linear-gradient(135deg, #1e1a, #6c63ff) ;
+    color: #2b2b2b;
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: .4rem;
+    padding: 0.7rem;
+}
+.skill:hover{
+    background: linear-gradient(to bottom right, #6c63ff, #b3a8c9) ;
+}
+.skill ul{
+    list-style-type: none;
+}
+.proj{
+    grid-column: 1 / -1; /* span the full width of grid */
+    background: linear-gradient(135deg, #3d2c8d, #6c63ff) ;
+    border: solid 1px black; 
+    border-radius: 10px;
+    margin: 0.4rem;
+    padding: 0.8rem;
+}
+.proj:hover{
+    background: linear-gradient(to bottom right, #6c63ff, #b3a8c9) ;
+}
+.proj h2{
+    padding-bottom: 1rem;
+}
+/* @media (max-width: 768px) {
+  .box-60,
+  .box-40 {
+    width: 100%;
   }
+} */
