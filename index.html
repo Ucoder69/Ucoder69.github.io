@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="nav.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
 </head>
 
 <header>
@@ -22,11 +26,21 @@
 </header>
 
     <body>
+        <div id="loader">
+            <div class="bouncing-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    <script>
+    window.addEventListener("load", function () {
+    document.getElementById("loader").style.display = "none";
+  });
+  </script>
         <main class="display">
             <div class="info-container">
                 <section class="intro" id="general">
                     <h2>Introduction:</h2>
-                    <p>hi. this is page in WIP. go to about me.
+                    <p>Hello there, welcome to my website :D this is page in WIP. go to other pages.
                         Color: 1e1a2e, 5c4f6e, b3a8c9
                     </p>
                 </section>        
@@ -35,6 +49,7 @@
                     <ul>
                         <li>Python</li>
                         <li>C++</li>
+                        <li>HTML & CSS</li>
                     </ul>
                 </section>
                 <section  class= "proj" id="projects">
@@ -46,15 +61,15 @@
                 </section>
             </div>
            
-            <section id="contact">
+            <!-- <section id="contact">
                 <h2>Contact</h2>
-                <p>Go to Contact Me page</p>
-            </section>
+                <p>Go to <a href="contact me.html">Contact Me</a> page</p>
+            </section> -->
         <hr>
         </main>
     
         <footer>
-            <p>&copy; 2025 Ugamer</p>
+            &copy; 2025 Ugamer
         </footer>
     </body>
 </html>
