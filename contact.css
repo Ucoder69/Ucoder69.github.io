@@ -50,6 +50,8 @@ input[type="text"], input[type="email"],textarea{
     /* flex: 1; */
     box-sizing: border-box;
     width: 100%;
+    color:#EFEAFB;
+    border-color: black;
 }
 .inside3, .inside{
     text-align: left;
