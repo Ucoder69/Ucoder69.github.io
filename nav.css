@@ -9,7 +9,13 @@ header{
     justify-content: space-between;
     /* background: linear-gradient( to right, rgba(105, 191, 248, 0.726) , wheat ); */
     background: linear-gradient( to bottom right, #1e1a2e, #5c4f6e, #b3a8c9);
-    border-style: solid rgb(230, 230, 230);
+    border-style: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform-style: preserve-3d;
+}
+header:hover{
+    transform:scale3d(1.01, 1.01, 1.01);
+    transition: 0.1s ease-in-out;
 }
 header h1{
     margin: 0;
