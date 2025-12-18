@@ -72,11 +72,6 @@ footer {
     color: black;
     padding: 10px 0;
 }
-
-/* Add a hover effect to the buttons */
-button:hover {
-    background-color: #45a049;
-}
 .info-container {
     display: grid;
     grid-template-columns: 60% 40%;
