@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Suparno">
+    <meta name="description" content="this is an about me page">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="bg.css">
+    <!-- <link rel="stylesheet" href="button.css"> -->
+    <link rel="stylesheet" href="footer.css">
+    <link rel="shortcut icon" href="fs.png" type="image/x-icon">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <title>About Me</title>
+</head>
+<video class="bg-video" autoplay muted loop playsinline poster="./images/web-bg.jpeg">
+  <source src="./video/web-bg-video.mp4" type="video/mp4">
+</video>
+<body>
+  <div id="loader">
+    <div class="bouncing-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <script>
+     window.addEventListener("load", function () {
+    document.getElementById("loader").style.display = "none";
+  });
+  </script>
+  <header>
+    <h1>ABOUT ME</h1>
+    <nav aria-label="primary-navigation" >
+       <ul class="nav-list">
+            <li class="nav-link"><a href="index.html">HOME</a></li>
+            <li class="nav-link"><a href="about.html">ABOUT ME</a></li>
+            <li class="nav-link"><a href="projects.html">PROJECTS</a></li>
+            <li class="nav-link"><a href="contact me.html">CONTACT ME</a></li>
+        </ul>
+  </nav>
+  </header>
+  <main>
+      <h2>Who am I?</h2>
+      <p class="para">Myself, Suparno Dey, a high school student, who has a knack to computer science and wants to become a game developer.</p>
+      <h2>What are my current capabilites?</h2>
+      <p ><ul class="tab" >
+            <li>I have also <div class="strong">learning C++</div> to fuel my imagination to make games.</li>
+            <li>I am honing my skill on python and have <div class="strong">created applications</div> based on this language.</li>
+            <li>I am also learning html and css trying to improve my web developmwnt skills.</li>
+            <li>I have also been learning and honing my musical skills in mandolin for over <div class="strong">5 years</div>, having performed in an audience many times in the past. </li>
+      </ul></p>
+      <hr>
+      <p class="para">
+        contact me at <a href="contact me.html">Contact page</a>
+      </p>
+      <hr>
+    </main>
+    <!-- <div class="right"><a href="#"class="invisible-link" tabindex="-1"><button type="button"><img class="btn-img"src="./images/arrow_upward.png" alt="up arrow"></button></a></div> -->
+      
+</body>
+<footer class="footers">
+    <h3 class="devt">Designed and build by Ugamer</h3>
+    <p class="footer-text">&copy; 2025 Ugamer </p>
+    <div class="link-panel">
+        <ul class="footer-list">
+            <li class="mail"><a href="contact me.html"><img src="./images/mail.png" alt="Mail Icon"></a></li>
+            <li class="insta"><a href="https://www.instagram.com/suparno.dev/"><img src="./images/Instagram_Glyph_White.png" alt="Instagram"></a></li>
+        </ul>
+    </div>
+</footer>
+</html>

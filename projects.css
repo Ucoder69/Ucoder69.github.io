@@ -1,0 +1,56 @@
+*{ 
+    margin:0;
+    padding:0;
+    box-sizing: content-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.17rem;
+}
+html{
+    background: #EFEAFB;
+}
+body {
+    color: #ffffffc5;
+}
+main{
+    margin: 0 0.6rem;
+    margin-top: 3rem;
+    
+}
+.title{
+    text-align: center;
+    margin: 0.4rem 0 0.6rem 0;
+    font-size: 2.5rem;
+}
+.violet{
+    font-size: 2.5rem;
+    font-style: normal;
+    color: #6c63ff;
+}
+.desc{
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+.first-row{
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    margin: 1rem;
+    margin-bottom: 0.5rem;
+}
+.proj{
+    background: linear-gradient(to right, rgb(116, 52, 219) ,rgb(137, 54, 214) , rgb(190, 169, 169, 0.986)); ;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    color: #ffffffc5;
+    border-radius: 10px;
+    margin: 0.4rem;
+    margin-top: 0.6rem;
+    padding: 0.8rem;
+}
+.proj:hover{
+    background: linear-gradient(to bottom right, #6c63ff, #b3a8c9) ;
+    transform: translateY(-3px);
+    transform: scale(1.015);
+    transition: 0.2s ease;
+}
+.proj1, .proj2{
+    text-align: center;
+}

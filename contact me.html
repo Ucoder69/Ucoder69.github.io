@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <meta name="descirption" content="contact page for me">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="bg.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<video class="bg-video" autoplay muted loop playsinline poster="./images/web-bg.jpeg">
+  <source src="./video/web-bg-video.mp4" type="video/mp4">
+</video>
+<header>
+    <h1>PORTFOLIO</h1>
+    <nav aria-label="primary-navigation">
+         <ul class="nav-list">
+            <li class="nav-link"><a href="index.html">HOME</a></li>
+            <li class="nav-link"><a href="about.html">ABOUT ME</a></li>
+            <li class="nav-link"><a href="projects.html">PROJECTS</a></li>
+            <li class="nav-link"><a href="contact me.html">CONTACT ME</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+    <h2 class="title">Contact <em class="violet">Form</em></h2>
+    <p class="desc">How you can contact me directly</p>
+    <form class="form" id="Personal" action="https://formspree.io/f/mzzazzne" method="post" autocomplete="off">
+    <fieldset class="fieldset">
+        <p class="inside">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" placeholder="Ex: Rajesh Ghosh" required autofocus>
+        </p>
+        <p class="inside">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Ex: abc123@gmail.com" required autofocus>
+        </p>
+        <p class="inside3" >
+            <label>You are a:</label><br>
+            <input class="box" type="radio" id="ind" name="part" value="individual" required>
+            <label class="radio-op" for="ind">Individual</label><br>
+
+            <input class="box" type="radio" id="organ" name="part" value="organisation">
+            <label class="radio-op" for="organ">Organisation</label><br>
+
+            <input class="box" type="radio" id="busin" name="part" value="busin">
+            <label class="radio-op" for="busin">Business</label><br>
+
+            <input class="box" type="radio" id="other" name="part" value="other">
+            <label class="radio-op" for="other">Other</label>
+        </p>
+        <p class="inside">
+            <label class="reason" for="reason">Purpose for contact: </label>
+           <textarea name="reason" id="reason" rows="3" cols="60" placeholder="I want to contact because..." required></textarea>
+        </p>
+        <div class="form-actions">
+            <button type="reset" class="btn-reset">Reset</button>
+            <button type="submit" class="btn-submit">Submit -></button>
+        </div>
+        
+    </fieldset>
+    </form>
+    </main>
+    <script>
+    const form = document.getElementById("Personal");
+
+    form.addEventListener("submit", function(e) {
+    // let the form actually submit
+    setTimeout(() => form.reset(), 2000); 
+    // reset after 0.5s so backend still gets the data
+  });
+</script>
+</body>
+<hr class="lhr">
+<footer class="footers">
+    <h3 class="devt">Designed and build by Ugamer</h3>
+    <p class="footer-text">&copy; 2025 Ugamer </p>
+    <div class="link-panel">
+        <ul class="footer-list">
+            <li class="mail"><a href="contact me.html"><img src="./images/mail.png" alt="Mail Icon"></a></li>
+            <li class="insta"><a href="https://www.instagram.com/suparno.dev/"><img src="./images/Instagram_Glyph_White.png" alt="Instagram"></a></li>
+        </ul>
+    </div>
+</footer>
+</html>
