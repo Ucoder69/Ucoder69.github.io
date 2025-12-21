@@ -1,0 +1,53 @@
+
+.btn-img{
+    border: 1px solid;
+    border-radius: 50%;
+    background-color: inherit;
+    overflow: hidden;
+}
+.right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 10px 16px;
+    border-radius: 50px; /* fully rounded */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+.right button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.right button:hover{
+    background-color: red;
+}
+  
+.btn-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* circular image */
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.invisible-link {
+    all: unset; /* removes all default link styles */
+    display: inline-block; /* keeps layout behavior */
+}
+  
+.invisible-link:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}

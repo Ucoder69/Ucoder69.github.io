@@ -1,0 +1,71 @@
+.footers{
+    position: relative;
+    background: linear-gradient( to top right, #1e1a2e, #5c4f6e);
+    border-style: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    color: #EFEAFB; 
+    margin-top: 0.6rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+}
+.devt{
+    font-weight: initial;
+    font-size: 0.89rem;
+    padding-left: 1rem;
+    justify-self: start;
+    font-family:'PT Mono', monospace;
+
+}
+.footer-text{
+    /* padding: 0.4rem 0; */
+    /* position: absolute;
+    left: 50%; */
+    font-size: 0.89rem;
+    /* transform: translateX(-50%); */
+    text-align: center;
+    justify-self: center;
+    font-family:'PT Mono', monospace;
+
+}
+.link-panel {
+    padding: 0 2rem;
+    justify-self: end;
+    font-family:'PT Mono', monospace;
+}
+.footer-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin:0;
+    
+}
+.footer-list li{
+    text-align: center;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.89rem;
+    font-family:'PT Mono', monospace;
+}
+.footer-list li a{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: #EFEAFB;
+    font-size: 0.89rem;
+}
+.mail{
+    align-items: center;
+}
+.mail img{
+    width: 24px;
+    height: 22px;
+}
+.insta img{
+    width: 18x;
+    height: 18px;
+}
