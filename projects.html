@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucoder69 | Portfolio</title>
+    <meta name="description" content="Explore the coding portfolio of Suparno Dey. Browse game development projects, Python applications, and computer science experiments built with passion.">
+    <meta name="author" content="Ucoder69">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/favicon.png">
+    <link rel="preload" href="./images/web-bg.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="projects.css">
+    
+    <script>
+        window.addEventListener("load", function () {
+        document.getElementById("loader").style.display = "none"; 
+        });
+        // fix loader later
+    </script>
+</head>
+<body> 
+    <video class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.png">
+        <source src="./video/web-bg-video.mp4" type="video/mp4">
+    </video>
+    <header>
+        <h1>PORTFOLIO</h1>
+        <nav aria-label="primary-navigation">
+            <ul class="nav-list">
+                <li class="nav-link"><a href="index.html">HOME</a></li>
+                <li class="nav-link"><a href="about.html">ABOUT ME</a></li>
+                <li class="nav-link"><a href="projects.html">PROJECTS</a></li>
+                <li class="nav-link"><a href="contact.html">CONTACT ME</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <span class="dark-icon">☀️</span>
+                        <span class="light-icon">🌙</span>
+                    </button>
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+        </div>
+    </header>
+    <div id="loader">
+        <div class="bouncing-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+    <main class="display reveal">
+        <h1 class="title">My Prominent <em class="violet"> Works</em></h1>
+        <p class="desc">Here's what I have been coding recently</p>
+        <div class="first-row reveal">
+            <section class= "proj1 reveal" id="projects">
+                <div class="proj">
+                    <h3 class="proj-title reveal">Naval</h3>
+                    <p>A brief description of Project 1</p>
+                    <img class="proj-img" src="./images/temp.jpeg" alt="Project 1 Image">
+                    <div class="box-container">
+                        <!-- <a href="contact.html" class="box"><img class="mail" src="./images/mail.png" alt="Mail icon">  Contact</a> -->
+                        <a href="https://www.github.com/Ucoder69" class="box"><img class="github"class="mail" src="./images/GitHub_White.png" alt="GitHub icon"> GitHub</a>
+                    </div>
+                </div>
+            </section> 
+            <section  class= "proj2 reveal" id="projects">
+                <div class="proj">
+                    <h3 class="proj-title reveal">Project 2:</h3>
+                    <p>A brief description of Project 2</p> 
+                    <img class="proj-img" src="./images/temp.jpeg" alt="Project 1 Image">
+                    <div class="box-container">
+                        <!-- <a href="contact.html" class="box"><img class="mail" src="./images/mail.png" alt="Mail icon">  Contact</a> -->
+                        <a href="https://www.github.com/Ucoder69" class="box"><img class="github"class="mail" src="./images/GitHub_White.png" alt="GitHub icon"> GitHub</a>
+                    </div>                   
+                </div>
+            </section>       
+        </div>
+    </main>
+        <footer class="footers">
+        <h3 class="devt">Designed and built by Ucoder69</h3>
+        <p class="footer-text">&copy; 2026 Ucoder69 </p>
+        <div class="link-panel">
+            <ul class="footer-list">
+                <li class="mail"><a href="contact.html"><img src="./images/mail.svg" alt="Mail Icon"></a></li>
+                <li class="insta"><a href="https://www.instagram.com/suparno.dev/"><img src="./images/Instagram_Glyph_White.png" alt="Instagram"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
