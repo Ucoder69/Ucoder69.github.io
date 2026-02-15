@@ -6,7 +6,7 @@
     font-family: "Roboto", sans-serif;
 }
 html{
-    background-color: #EFEAFB;
+    background-color:rgb(85, 51, 88);
 }
 body{
     color: #ffffffc5;
@@ -265,6 +265,9 @@ hr{
     main {
         margin-top: 1.5rem;
     }
+    .left[
+        margin-left: 0;
+    ]
     h2 {
         margin: 0.8rem;
         padding: 0.8rem 0.3rem;
