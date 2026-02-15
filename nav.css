@@ -1,0 +1,654 @@
+.prtfl{
+    font-family: 'PT Mono', monospace;
+    scrollbar-width: none; /* Hides it in Firefox */
+}
+/* 1. Hide the ugly native scrollbar completely */
+/* For Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+/* For Firefox and IE */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 2. Style our custom floating handle */
+#custom-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 3px; /* Distance from edge */
+  width: 6px; /* Thickness */
+  background: rgba(120, 120, 120, 0.7); /* Grey color */
+  border-radius: 20px;
+  z-index: 9998;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.4s ease; /* Smooth fade in/out */
+  pointer-events: none; /* User clicks "through" it to the site */
+  will-change: transform;
+}
+
+/* Show it when scrolling */
+#custom-scrollbar.visible {
+  opacity: 1;
+}
+
+/* Dark mode adjustment if you have it */
+[data-theme="dark"] #custom-scrollbar {
+  background: rgba(197, 112, 253, 0.8);
+}
+@media screen and (max-width: 480px) {
+    #custom-scrollbar {
+        right: 1px; /* Adjust for smaller screens */
+        width: 3px;
+    }
+    
+}
+/* ===================================
+   LOADING SCREEN
+   =================================== */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0a0814;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    margin: 0;
+    padding: 0;
+}
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.bouncing-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.bouncing-dots span {
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+}
+
+.bouncing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bouncing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+/* Lock the scrollbar on page start */
+body {
+    overflow: hidden;
+}
+
+/* Optional: Keep the scrollbar gap so the page doesn't "jump" when it unlocks */
+body.loaded {
+    overflow-y: auto;
+}
+
+/* ===================================
+   HEADER - MOBILE FIRST
+   =================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom right, #1e1a2e, #5c4f6e, #b3a8c9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+}
+
+header h1 {
+    margin: 0;
+    color: #b3a8c9;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    z-index: 1002;
+}
+
+/* ===================================
+   MOBILE ACTIONS (VISIBLE ON MOBILE)
+   =================================== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 1002;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background-color: rgb(174, 214, 240);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.25);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+.dark-mode-toggle .light-icon,
+.dark-mode-toggle .dark-icon {
+    position: absolute;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode-toggle .light-icon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+.dark-mode-toggle .dark-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .dark-mode-toggle {
+    background: rgb(16, 3, 39);
+    box-shadow: 0 4px 12px rgba(201, 160, 104, 0.3);
+}
+
+[data-theme="dark"] .dark-mode-toggle .light-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] .dark-mode-toggle .dark-icon {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+/* Hamburger Menu Toggle */
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 44px;
+    height: 44px;
+    z-index: 1002;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hamburger Animation */
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===================================
+   MOBILE NAVIGATION MENU
+   =================================== */
+@media (max-width:850px) {
+header nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #1e1a2e, #2d2640);
+    padding-top: 80px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+header nav.active {
+    right: 0;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    display: block;
+    list-style: none;
+}
+
+.nav-link a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    color: #e0d9ea;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, rgb(197, 112, 253), rgb(228, 167, 252));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link a:active {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding-left: 2rem;
+}
+
+.nav-link a:hover::before {
+    transform: scaleY(1);
+}
+}
+/* ===================================
+   MOBILE NAVIGATION OVERLAY
+   =================================== */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+    pointer-events: none;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Prevent body scroll when menu is open */
+body.nav-open {
+    overflow: hidden;
+}
+
+/* ===================================
+   TABLET BREAKPOINT (768px+)
+   =================================== */
+@media (min-width: 850px) {
+    header{
+        position: fixed;
+        top:0;
+        width: 100%;
+        padding: 0.5rem 0; 
+        /* border: 3px; */
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient( to bottom right, #1e1a2e, #5c4f6e, #b3a8c9);
+        /* border-style: none; */
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        transform-style: preserve-3d;
+        z-index: 1000;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header:hover{
+        /* transform:scale3d(1.01, 1.01, 1.01); */
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    header h1{
+        margin: 0;
+        color: #b3a8c9;
+        font-size: 1.6rem;
+        padding: 0 20px 0 20px;
+    }   
+    .nav-list{
+        display: flex;
+        gap: 0.2rem;
+        margin:0;
+    }
+    .nav-link{
+        list-style: none;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+        background: inherit;
+        border: 0;
+        padding: 0.4rem;
+        margin: 0.5rem;
+        margin-left: 0.2rem;
+        
+    }
+    .nav-link a{
+        text-decoration: none;
+        color: whitesmoke;
+        padding:0.5rem 0;
+        position: relative;
+    }
+
+    .nav-link a:hover, .nav-link a:focus{
+        /* color: #1e1a2e; */
+        /* position: relative; */
+        transform: translateY(-2px);
+    }
+    .nav-link a:focus-visible{
+        outline: 2px solid white;
+        outline-offset: 0.3rem;
+        border-radius: 10px;
+    }
+    .nav-link a::before{
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -2px;              /* gap from text */
+        width: 0;                  /* start hidden */
+        height: 7px;
+        background: linear-gradient( to right, rgb(197, 112, 253), rgb(228, 167, 252));
+        border-radius: 999px;
+        transform: translateX(-50%);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .nav-link a:hover::before {
+        transform: translateX(-50%);
+        width: 100%;
+    }
+    .nav-link{
+        /* transition: none !important; */
+        transform: translateZ(0);
+    }
+    .dark-mode-toggle{
+        margin-right:1rem;
+    }
+    .nav-toggle{
+        display: none;
+    }
+    /* Hide overlay on desktop */
+    .nav-overlay {
+        display: none;
+    }
+}
+
+/* ===================================
+   DESKTOP BREAKPOINT (1024px+)
+   =================================== */
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 1.95rem;
+    }
+
+    .nav-list {
+        gap: 0.2rem;
+    }
+    .nav-link{
+        list-style: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        background: inherit;
+        border: 0;
+        padding: 0.4rem;
+        margin: 0.5rem;
+        margin-left: 0.2rem;
+    }
+    .nav-link a {
+        padding: 0.5rem 0;
+        font-size: 1.05rem;
+        position: relative;
+    }
+    
+    .nav-link a:hover, .nav-link a:focus{
+        /* color: #1e1a2e; */
+        /* position: relative; */
+        transform: translateY(-2px);
+    }
+    .nav-link a:focus-visible{
+        outline: 2px solid white;
+        outline-offset: 0.3rem;
+        border-radius: 10px;
+    }
+    .nav-link a::before{
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -2px;              /* gap from text */
+        width: 0;                  /* start hidden */
+        height: 7px;
+        background: linear-gradient( to right, rgb(197, 112, 253), rgb(228, 167, 252));
+        border-radius: 999px;
+        transform: translateX(-50%);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .nav-link a:hover::before {
+        transform: translateX(-50%);
+        width: 100%;
+    }
+}
+
+/* ===================================
+   DARK THEME
+   =================================== */
+[data-theme="dark"] header {
+    background: linear-gradient(to bottom right, #0a0814, #3e3351, #7a6b8c);
+}
+@media (max-width: 850px) {
+[data-theme="dark"] header nav {
+    background: linear-gradient(to bottom, #0a0814, #1a1425);
+}
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footers{
+    content-visibility: auto;
+    contain-intrinsic-size: 500px; /* Give it a guestimated height */
+}
+.footers {
+    position: relative;
+    background: linear-gradient(to top right, #1e1a2e, #5c4f6e);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    color: #EFEAFB;
+    margin-top: 0.6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    padding: 0.8rem 0.3rem;
+}
+
+.devt {
+    font-weight: 400;
+    font-size: 0.80rem;
+    font-family: 'PT Mono', monospace;
+    margin: 0;
+}
+
+.footer-text {
+    font-size: 0.80rem;
+    font-family: 'PT Mono', monospace;
+    margin: 0;
+}
+
+.link-panel {
+    font-family: 'PT Mono', monospace;
+}
+
+.footer-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: #EFEAFB;
+    font-size: 0.80rem;
+    transition: transform 0.2s ease;
+}
+
+.footer-list li a:hover {
+    transform: translateY(-2px);
+}
+
+.mail img {
+    width: 24px;
+    height: 24px;
+}
+
+.insta img {
+    width: 18px;
+    height: 18px;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.6);
+    background: #2d2640;
+}
+
+[data-theme="dark"] .footers {
+    background: linear-gradient(to top right, #0a0814, #3e3351);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    color: #CFC6D8;
+}
+
+@media (min-width: 768px) {
+    .footers {
+        grid-template-columns: 1fr auto 1fr;
+        padding: 1rem 0.5rem;
+        gap: 1rem;
+    }
+
+    .devt {
+        justify-self: start;
+        text-align: left;
+        padding-left: 0.5rem;
+    }
+
+    .footer-text {
+        justify-self: center;
+    }
+
+    .link-panel {
+        justify-self: end;
+        padding-right: 0.5rem;
+    }
+
+    .footer-list {
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .footers {
+        padding: 0.5rem;
+    }
+
+    .devt,
+    .footer-text {
+        font-size: 0.89rem;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out; /* Adjust speed here */
+    visibility: hidden;
+    will-change: transform, opacity;
+    /* 2. Prevent "jittery" text rendering during movement */
+    backface-visibility: hidden;
+
+    /* 3. Forces a new painting layer */
+    transform: translateZ(0);
+}
+
+/* 2. The active state: triggered by JavaScript */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Portfolio of Suparno Dey: High school student, aspiring game developer, and computer science enthusiast. Discover my latest coding projects and a look into my creative life.">
+    <meta name="author" content="Ucoder69">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ucoder69 | Portfolio</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/favicon.png">
+   
+    <link rel="preload" href="./images/web-bg.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="index.css">    
+
+</head>
+<div id="loader">
+    <div class="bouncing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div id="custom-scrollbar"></div>
+<body>
+    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.png">
+        <source src="" type="video/mp4">
+    </video>
+    <header>
+    <h1 class="prtfl">PORTFOLIO</h1>
+    <nav aria-label="primary-navigation">
+        <ul class="nav-list">
+            <li class="nav-link"><a href="index.html">HOME</a></li>
+            <li class="nav-link"><a href="about.html">ABOUT ME</a></li>
+            <li class="nav-link"><a href="projects.html">PROJECTS</a></li>
+            <li class="nav-link"><a href="contact.html">CONTACT ME</a></li>
+        </ul>
+    </nav>
+    <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <span class="dark-icon">☀️</span>
+                    <span class="light-icon">🌙</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+        </div>
+    </header>
+        
+        <main class="display reveal">
+            
+            <div class="hero-container">
+                <div class="hero">
+                    <h1 class="Title">I am Suparno Dey. I'm a <br>
+                        <span id="typewriter" data-words='["Backend Developer", "UI Designer", "Problem Solver"]'></span><span class="cursor">|</span>
+                    </h1>
+                    <p class="desc">Welcome to my corner of the Web~</p>
+                </div>
+                <div class="hero-image-container">
+                    <img src="./images/home-image.png" alt="Image of me working on a project" class="home-image">
+                </div>
+            </div>
+            <div class="info-container">
+                <section class="intro reveal" id="general">
+                    <h2 class="Title_">Let Me <em  class="violet">Introduce</em> Myself</h2>
+                    <p>I am Suparno Dey, a curious and enthusiastic student with a deep passion for learning new skills and expanding my knowledge. I enjoy tackling challenging problems, exploring the latest in technology, and experimenting with innovative ideas. Building small projects and understanding how things work gives me immense satisfaction and keeps me motivated..</p>
+                    <p class="para-2"> 
+                        In my free time, I play games, practice music, exercise a bit, and learned <em class="violet">Python</em> from CS50 and <em class="violet">C++</em>, along with reading about science and coding ideas that help me grow and create.
+                    </p>
+                    <a class="lm" href="about.html">Learn More</a>
+                </section> 
+            </div>
+        </main>
+        <hr>
+        <!-- footer doesnt stay at bottom, change later -->
+        <footer class="footers">
+            <h3 class="devt">Designed and built by Ucoder69</h3>
+            <p class="footer-text">&copy; 2026 Ucoder69 </p>
+            <div class="link-panel">
+                <ul class="footer-list">
+                    <li class="mail"><a href="contact.html"><img src="./images/mail.svg" alt="Mail Icon"></a></li>
+                    <li class="insta"><a href="https://www.instagram.com/suparno.dev/"><img src="./images/Instagram_Glyph_White.png" alt="Instagram"></a></li>
+                </ul>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

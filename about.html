@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Meet Suparno Dey, a high school student and future game developer. Beyond computer science, I enjoy playing games, home cooking, and learning the mandolin.">
+    <meta name="author" content="Ucoder69">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ucoder69 | Portfolio</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="about.css">
+ 
+</head>
+<div id="loader">
+    <div class="bouncing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<div id="custom-scrollbar"></div>
+<body>
+    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.png">
+        <source src="" type="video/mp4">
+    </video>
+    <header>
+        <h1 class="prtfl">PORTFOLIO</h1>
+        <nav aria-label="primary-navigation">
+            <ul class="nav-list">
+                <li class="nav-link"><a href="index.html">HOME</a></li>
+                <li class="nav-link"><a href="about.html">ABOUT ME</a></li>
+                <li class="nav-link"><a href="projects.html">PROJECTS</a></li>
+                <li class="nav-link"><a href="contact.html">CONTACT ME</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                <span class="dark-icon">☀️</span>
+                <span class="light-icon">🌙</span>
+            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    <main>
+        <div class="disp reveal">
+            <div class="left">
+                <h2 class="Title">Who <em class="violet">I'M</em></h2>
+                <p class="desc">I am Suparno Dey, a high school student with a passion for computer science and wants to become a game developer.</p>
+                <h2 class="desc__">Outside of Coding, I also love being engaged in activites that keep me creative:</h2>
+                <ul class="tab" >
+                    <li>Playing Games</li>
+                    <li>Home Cooking</li>
+                    <li>Learning Mandolin </li>
+                </ul>
+                <p class="tab_ reveal">"Become a steve!"</p>
+                <p class="tab__ reveal">-Suparno</p>
+            </div>
+            <figure class=right>
+                <img class="me" src="./images/pic.png" alt="A picture of me working (in a cartoon way)" loading="lazy">
+                <!-- <figcaption class="figcap">A picture of me enjoying coding!</figcaption> -->
+            </figure>
+        </div>
+        
+        
+        <section class="goal reveal">
+            <h2 class="desc__">What are my future goals?</h2>
+            <p class="desc">My future goals include becoming a successful game developer, and creating immersive experiences. I will continue learning and improving my skills in programming and design.</p>
+        </section>
+        <section class="skillset reveal">
+            <h2 class="Title_">Professional <em class="violet">Skillset</em></h2>
+            <div class="box-container">
+                <a class="box_ reveal"><img class="python" src="./images/python.png" alt="Python">  Python</a>
+                <a class="box_ reveal"><img class="github" src="./images/c++.svg" alt="C++"> C++</a>
+                <a class="box_ reveal"><img class="github" src="./images/html5.svg" alt="HTML"> HTML</a>
+                <a class="box_ reveal"><img class="css" src="./images/css.png" alt="CSS"> CSS</a>
+                <a class="box_ reveal"><img class="github" src="./images/js.svg" alt="JavaScript"> JavaScript</a>
+            </div>
+        </section>
+        <hr>
+        <section class="contact-me reveal">
+            <h2 class="Title_">Get In <em class="violet_">Touch</em></h2>
+            <p class="desc_">Feel free to reach out to me via the contact page or Links given below. Looking forward to hearing from you!</p>
+            <div class="box-container reveal">
+                <a href="contact.html" class="box"><img class="mail1" src="./images/mail.svg" alt="Mail icon">  Contact</a>
+                <a href="https://www.github.com/Ucoder69" class="box"><img class="github"class="mail" src="./images/GitHub_White.png" alt="GitHub icon"> GitHub</a>
+            </div>
+            <div class="box-container reveal">
+                <a href="https://www.instagram.com/suparno.dev/" class="box"><img class="insta_" src="./images/Instagram_Glyph_White.png" alt="Instagram icon"> Instagram</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footers">
+    <h3 class="devt">Designed and built by Ucoder69</h3>
+    <p class="footer-text">&copy; 2026 Ucoder69 </p>
+    <div class="link-panel">
+        <ul class="footer-list">
+            <li class="mail"><a href="contact.html"><img src="./images/mail.svg" alt="Mail Icon"></a></li>
+            <li class="insta"><a href="https://www.instagram.com/suparno.dev/"><img src="./images/Instagram_Glyph_White.png" alt="Instagram"></a></li>
+        </ul>
+    </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
