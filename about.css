@@ -265,9 +265,9 @@ hr{
     main {
         margin-top: 1.5rem;
     }
-    .left[
+    .left{
         margin-left: 0;
-    ]
+    }
     h2 {
         margin: 0.8rem;
         padding: 0.8rem 0.3rem;
