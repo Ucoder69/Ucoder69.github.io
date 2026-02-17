@@ -69,13 +69,13 @@ body {
     flex-direction: column;
     justify-content: center;
 }
-.home-image{
+.hero-img{
     margin-right: 1rem;
-    max-width: 100%;
+    aspect-ratio: 1/1;
     flex: 1;
     object-fit: contain;
     flex-shrink: 0;
-    max-height: 450px;
+    max-height: 400px;
 }
 .container {
     width: 80%;
@@ -165,7 +165,7 @@ hr{
     }
 
 
-    .home-image {
+    .hero-img {
         max-height: 300px;
         margin-right: 0;
         align-content: center;
