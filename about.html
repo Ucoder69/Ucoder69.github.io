@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ucoder69 | Portfolio</title>
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="./images/favicon.png">
-    <link rel="preload" href="nav.css" as="style">
+    <link rel="preload" href="/nav.mini.v1.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/nav.mini.v1.css"></noscript>
+    <link rel="preload" href="/about.mini.v1.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/about.mini.v1.css"></noscript>
     <link rel="preload" href="./images/web-bg.webp" as="image">
+    <link rel="preload" href="./images/home-image.webp" as="image" fetchpriority="high">
     <link rel="preload" href="./fonts/roboto-v50-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/roboto-v50-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/noto-sans-v42-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/pt-mono-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="about.css">
- 
 </head>
 <div id="loader">
     <div class="bouncing-dots">
@@ -69,7 +70,6 @@
             </div>
             <figure class=right>
                 <img class="me" src="./images/pic.png" alt="A picture of me working (in a cartoon way)" loading="lazy">
-                <!-- <figcaption class="figcap">A picture of me enjoying coding!</figcaption> -->
             </figure>
         </div>
         
@@ -112,6 +112,6 @@
         </ul>
     </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
