@@ -6,7 +6,7 @@
     font-family: "Roboto", sans-serif;
 }
 html{
-    background-color:rgb(85, 51, 88);
+    background-color:#1a1425;
 }
 body{
     color: #ffffffc5;
@@ -81,12 +81,12 @@ hr{
 .violet{
     font-size: 2.5rem;
     font-style: normal;
-    color: #6c63ff;
+    color: rgba(197, 112, 253, 0.8);
 }
 .violet_{
     font-size: 2.5rem;
     font-style: normal;
-    color: #8780ff;
+    color: rgba(197, 112, 253, 0.8);
 }
 .desc{
     margin-bottom: 0.8rem;
