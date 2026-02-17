@@ -7,16 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ucoder69 | Portfolio</title>
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="./images/favicon.png">
-   
-    <link rel="preload" href="./images/web-bg.png" as="image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="preload" href="nav.css" as="style">
+    <link rel="preload" href="./images/web-bg.webp" as="image">
+    <link rel="preload" href="./images/home-image.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="./fonts/roboto-v50-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/roboto-v50-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/noto-sans-v42-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/pt-mono-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="index.css">    
 
@@ -30,7 +29,7 @@
 </div>
 <div id="custom-scrollbar"></div>
 <body>
-    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.png">
+    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.webp" loading="eager">
         <source src="" type="video/mp4">
     </video>
     <header>
@@ -66,7 +65,7 @@
                     <p class="desc">Welcome to my corner of the Web~</p>
                 </div>
                 <div class="hero-image-container">
-                    <img src="./images/home-image.png" alt="Image of me working on a project" class="home-image">
+                    <img  class="hero-img" src="./images/home-image.webp" alt="Image of me working on a project" loading="eager">
                 </div>
             </div>
             <div class="info-container">
@@ -92,6 +91,6 @@
                 </ul>
             </div>
         </footer>
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </body>
 </html>
