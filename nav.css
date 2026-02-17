@@ -44,7 +44,7 @@
 /* For Firefox and IE */
 html {
     scrollbar-width: none;
-    ms-overflow-style: none;
+    -ms-overflow-style: none;
     scroll-behavior: smooth;
     background-color: #1a1425;
 }
