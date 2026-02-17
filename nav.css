@@ -1,3 +1,37 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/roboto-v50-latin-regular.woff2') format('woff2');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/roboto-v50-latin-700.woff2') format('woff2');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pt Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/pt-mono-v14-latin-regular.woff2') format('woff2');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/noto-sans-v42-latin-regular.woff2') format('woff2');
+    font-display: swap;
+}
+#bg-video, .custom-scrollbar, .reveal {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform: translateZ(0);
+}
+
 .prtfl{
     font-family: 'PT Mono', monospace;
     scrollbar-width: none; /* Hides it in Firefox */
@@ -5,12 +39,14 @@
 /* 1. Hide the ugly native scrollbar completely */
 /* For Chrome, Safari, Edge */
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 /* For Firefox and IE */
 html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+    scrollbar-width: none;
+    ms-overflow-style: none;
+    scroll-behavior: smooth;
+    background-color: #1a1425;
 }
 
 /* 2. Style our custom floating handle */
