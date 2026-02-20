@@ -6,17 +6,18 @@
     <title>Ucoder69 | Portfolio</title>
     <meta name="description" content="Explore the coding portfolio of Suparno Dey. Browse game development projects, Python applications, and computer science experiments built with passion.">
     <meta name="author" content="Ucoder69">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
-    <link rel="alternate icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="./images/favicon.png">
-    <link rel="preload" href="./images/web-bg.png" as="image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="projects.css">
+    <link rel="preload" href="/nav.mini.v1.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/nav.mini.v1.css"></noscript>
+    <link rel="preload" href="/project.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/project.css"></noscript>
+    <link rel="preload" href="./images/web-bg.webp" as="image">
+    <!-- <link rel="preload" href="./images/home-image.webp" as="image" fetchpriority="high"> -->
+    <link rel="preload" href="./fonts/roboto-v50-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/roboto-v50-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/noto-sans-v42-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/pt-mono-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     </script>
 </head>
 <div id="loader">
@@ -28,7 +29,7 @@
 </div>
 <div id="custom-scrollbar"></div>
 <body> 
-    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.png">
+    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.webp">
         <source src="" type="video/mp4">
     </video>
     <header>
@@ -92,6 +93,6 @@
             </ul>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.v1.js" defer></script>
 </body>
 </html>
