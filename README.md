@@ -1,4 +1,4 @@
-# Hi there, I'm [Suparno Dey]! 👋
+# Hi there, I'm Suparno Dey! 👋
 
 I'm a **Frontend Developer** passionate about building clean, interactive, and user-centric web experiences. I specialize in turning complex problems into simple, elegant code.
 
