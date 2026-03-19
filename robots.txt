@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.yourdomain.com/sitemap.xml
+Sitemap: https://ucoder69.github.io/sitemap.xml
