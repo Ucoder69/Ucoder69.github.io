@@ -1,11 +1,11 @@
 # Hi there, I'm Suparno Dey! 👋
 
-I'm a **Frontend Developer** passionate about building clean, interactive, and user-centric web experiences. I specialize in turning complex problems into simple, elegant code.
+I'm a **Developer** passionate about building clean, interactive apps/programs that help people solve their problems. I excel at applied ML, which is also asomething that i want to help people. I specialize in turning complex problems into simple, elegant code.
 
 ###  Tech Stack
 * **Languages:** HTML5, CSS3, JavaScript (ES6+), Python, C++
 * **Tools:** Git, GitHub, VS Code, Kdenlive (Video Editing)
-* **Currently Learning:** [Node.js]
+* **Currently Learning:** Machine learning and fine tune small scale models
 
 ### Featured Project: My Portfolio
 I recently launched my official portfolio site! It features:
