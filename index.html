@@ -10,8 +10,8 @@
     
     <link rel="icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="./images/favicon.png">
-    <link rel="preload" href="/nav.mini.v1.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/nav.mini.v1.css"></noscript>
+    <link rel="preload" href="/nav.mini.v2.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/nav.mini.v2.css"></noscript>
     <link rel="preload" href="/index.mini.v1.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/index.mini.v1.css"></noscript>
     <link rel="preload" href="./images/web-bg.webp" as="image">
@@ -30,9 +30,10 @@
 </div>
 <div id="custom-scrollbar"></div>
 <body>
-    <video  id="bg-video" class="bg-video" autoplay muted loop playsinline fetchpriority="high" poster="./images/web-bg.webp" loading="eager">
-        <source src="" type="video/mp4">
-    </video>
+  <svg class="starfield" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g id="star-group"></g>
+  </svg>
     <header>
     <h1 class="prtfl">PORTFOLIO</h1>
     <nav aria-label="primary-navigation">
@@ -93,6 +94,6 @@
                 </ul>
             </div>
         </footer>
-        <script src="script.v1.js" defer></script>
+        <script src="script.v2.js" defer></script>
     </body>
 </html>
