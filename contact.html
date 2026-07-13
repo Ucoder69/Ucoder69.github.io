@@ -103,12 +103,53 @@
         </form>
     </main>
     <script>
-    const form = document.getElementById("Personal");
+      const form = document.getElementById("Personal");
+      const submitBtn = form.querySelector(".btn-submit");
+    
+      form.addEventListener("submit", async function(e) {
+        // 1. Stop the browser from redirecting to Formspree!
+        e.preventDefault(); 
+    
+        // 2. Temporarily change the button text so the user knows it's working
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true; // Prevent double-clicking
+    
+        // Pack up all the form data
+        const formData = new FormData(form);
+    
+        try {
+          // 3. Send the data to Formspree silently in the background
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+              'Accept': 'application/json' // This tells Formspree NOT to redirect
+            }
+          });
 
-    form.addEventListener("submit", function(e) {
-    // let the form actually submit
-    setTimeout(() => form.reset(), 2000); 
-    // reset after 2.0s so backend still gets the data
+      if (response.ok) {
+        // 4. Success! Reset the form and show a success message
+        form.reset();
+        submitBtn.textContent = "Sent Successfully! 🚀";
+        submitBtn.style.backgroundColor = "#4caf50"; // Turn it green
+        submitBtn.style.borderColor = "#4caf50";
+      } else {
+        // Formspree rejected it (e.g., spam)
+        submitBtn.textContent = "Oops! Error sending.";
+      }
+    } catch (error) {
+      // User lost internet connection or adblocker blocked it
+      submitBtn.textContent = "Network Error!";
+    }
+
+    // 5. Reset the button back to normal after 3 seconds
+    setTimeout(() => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.style.backgroundColor = ""; // Reset to your CSS default
+      submitBtn.style.borderColor = "";
+      submitBtn.disabled = false;
+    }, 3000);
     });
     </script>
     
