@@ -239,3 +239,6 @@ hr{
         padding: 0.5rem 1rem;
     }
 }
+@media (min-width: 2560px){
+    html {font-size: 28px;}
+}

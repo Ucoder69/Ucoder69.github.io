@@ -283,3 +283,6 @@ hr{
         padding: 0.8rem;
     }
 }
+@media (min-width: 2560px){
+    html {font-size: 28px;}
+}

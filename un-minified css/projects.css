@@ -41,7 +41,7 @@ main{
     align-items: stretch;
 }
 .proj{
-    background: linear-gradient(to right, rgb(116, 52, 219) ,rgb(137, 54, 214) , rgb(190, 169, 169, 0.986)); ;
+    background: linear-gradient(to right,  #6134db, #8936d6, #9c7e7efb); ;
     box-shadow: 0 12px 24px rgba(255, 255, 255, 0.25), inset 0 1px 0 rgba(0, 0, 0, 0.25);
     
     color: #ffffffc5;
@@ -82,17 +82,12 @@ main{
     border-radius: 8px;
     margin-top: 1rem;
     padding: 0.5rem;
-
-    /* 1. Set the maximum size it can reach */
     width: 400px; 
     
     /* 2. Allow it to shrink on small screens */
     max-width: 90%; 
-    
-    /* 3. Maintain a square shape (instead of a fixed height) */
     aspect-ratio: 1 / 1; 
 
-    /* 4. Keeps the center focus while shrinking */
     object-fit: cover;
     object-position: center;
 }
@@ -125,7 +120,7 @@ main{
 }
 [data-theme="dark"] .proj {
     box-shadow: 0 12px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-     background: linear-gradient(to right, rgb(116, 52, 219) ,rgb(137, 54, 214) , rgba(156, 126, 126, 0.986));
+     background: linear-gradient(to right, #7434db0d, #320061, #454545fb);
 }
 
 /* Mobile responsiveness */
@@ -203,4 +198,7 @@ main{
         max-width: 90%;
         max-height: 250px;
     }
+}
+@media (min-width: 2560px){
+    html {font-size: 28px;}
 }

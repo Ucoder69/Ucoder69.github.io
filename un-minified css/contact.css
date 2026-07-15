@@ -311,3 +311,6 @@ footer {
 #email-group.invalid input {
   border-bottom-color: #ff6b6b !important;
 }
+@media (min-width: 2560px){
+    html {font-size: 28px;}
+}
