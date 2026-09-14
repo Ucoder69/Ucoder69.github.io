@@ -19,18 +19,15 @@
     <link rel="preload" href="./fonts/pt-mono-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
-        /* Red bar for error state */
+        /* Red border on error state */
         #email-group.invalid input {
             border-color: #e53935 !important;
         }
-        #email-group.invalid .error-msg {
-            color: #e53935;
-        }
 
-        /* Green bar for success/valid state */
+        /* Green border on valid state */
         #email-group.valid input {
             border-color: #4caf50 !important;
-        }
+        } }
     </style>
 </head>
 
@@ -73,7 +70,7 @@
     <main class="reveal">
         <h2 class="title">Contact <em class="violet">Form</em></h2>
         <p class="desc">How you can contact me directly</p>
-        <form class="form" id="Personal" action="https://formspree.io/f/mzzazzne" method="post" >
+        <form class="form" id="Personal" action="https://formspree.io/f/mzzazzne" method="post">
             <fieldset class="fieldset">
                 <p class="inside">
                     <label for="name">Full Name</label>
@@ -82,7 +79,6 @@
                 <p class="inside" id="email-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required autocomplete="on">
-                    <span class="error-msg" id="email-error"></span>
                 </p>
                 <p class="inside3">
                     <p class="label">Profile:</p>
@@ -99,7 +95,7 @@
                         <input class="box" type="radio" id="busin" name="part" value="busin">
                         <label class="radio-op" for="busin">Business</label>
                     </li>
-                    <li class="op"  >
+                    <li class="op">
                         <input class="box" type="radio" id="other" name="part" value="other">
                         <label class="radio-op" for="other">Other</label>
                     </li>
@@ -109,7 +105,7 @@
                     <label class="reason" for="reason">Purpose for contact: </label>
                     <textarea name="reason" id="reason" rows="3" cols="60" placeholder="I want to contact because..." required></textarea>
                 </p>
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <div class="form-actions">
                     <button type="reset" class="btn-reset">Reset</button>
                     <button type="submit" class="btn-submit">Submit</button>
@@ -123,38 +119,27 @@
     const submitBtn = form.querySelector(".btn-submit");
     const emailInput = document.getElementById("email");
     const emailGroup = document.getElementById("email-group");
-    const emailError = document.getElementById("email-error");
   
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 1. Validate only when user tabs out (blur)
+    // Validate only on tab out (blur)
     emailInput.addEventListener("blur", validateEmail);
 
-    // 2. Stop showing errors the instant the user starts editing/typing
+    // Reset status styles immediately when user starts typing
     emailInput.addEventListener("input", () => {
-      emailGroup.classList.remove("invalid");
-      emailGroup.classList.remove("valid");
-      emailError.textContent = "";
+      emailGroup.classList.remove("invalid", "valid");
     });
 
     function validateEmail() {
       const value = emailInput.value.trim();
 
-      if (value === "") {
+      if (value === "" || !emailRegex.test(value)) {
         emailGroup.classList.add("invalid");
         emailGroup.classList.remove("valid");
-        emailError.textContent = "Email is required to reach out!";
-        return false;
-      } else if (!emailRegex.test(value)) {
-        emailGroup.classList.add("invalid");
-        emailGroup.classList.remove("valid");
-        emailError.textContent = "Oops! Please enter a valid email address.";
         return false;
       } else {
-        // Valid email on blur -> Show green state
         emailGroup.classList.remove("invalid");
         emailGroup.classList.add("valid");
-        emailError.textContent = "";
         return true;
       }
     }
@@ -192,8 +177,10 @@
           submitBtn.textContent = "Oops! Error sending.";
         }
       } catch (error) {
+        console.error("Form error:", error);
         submitBtn.textContent = "Network Error!";
       }
+
       setTimeout(() => {
         submitBtn.textContent = originalBtnText;
         submitBtn.style.backgroundColor = ""; 
@@ -206,7 +193,7 @@
     <hr class="lhr">
     <footer class="footers">
         <h3 class="devt">Designed and built by Ucoder69</h3>
-        <p class="footer-text">&copy; 2026 Ucoder69 </p>
+        <p class="footer-text">&copy; 2026 Ucoder69</p>
         <div class="link-panel">
             <ul class="footer-list">
                 <li class="mail"><a href="https://linkedin.com/in/suparnodey/" target="_blank" rel="noopener"><img src="./images/LinkedIn_white.png" alt="LinkedIn"></a></li>
@@ -216,5 +203,5 @@
         </div>
     </footer>
     <script src="script.v2.js" defer></script>
-    </body>
+</body>
 </html>
