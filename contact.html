@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <!-- Moved inside <body> -->
+    <!-- Elements moved inside body -->
     <div id="loader">
         <div class="bouncing-dots">
             <span></span><span></span><span></span>
@@ -29,8 +29,8 @@
     <div id="custom-scrollbar"></div>
 
     <svg class="starfield" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        <rect width="100%" height="100%" fill="transparent"/>
-        <g id="star-group"></g>
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g id="star-group"></g>
     </svg>
     
     <header>
@@ -59,40 +59,40 @@
     <main class="reveal">
         <h2 class="title">Contact <em class="violet">Form</em></h2>
         <p class="desc">How you can contact me directly</p>
-        <form class="form" id="Personal" action="https://formspree.io/f/mzzazzne" method="post">
+        <form class="form" id="Personal" action="https://formspree.io/f/mzzazzne" method="post" >
             <fieldset class="fieldset">
                 <p class="inside">
                     <label for="name">Full Name</label>
                     <input type="text" name="name" id="name" required autofocus autocomplete="on">
                 </p>
-                <!-- Added id="email-group" here -->
+                <!-- Added id="email-group" so JS target exists -->
                 <p class="inside" id="email-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required autocomplete="on">
                     <span class="error-msg" id="email-error"></span>
                 </p>
-                <!-- Changed wrapper <p> to <div> to allow block children -->
-                <div class="inside3">
+                <!-- Kept original nesting structure -->
+                <p class="inside3">
                     <p class="label">Profile:</p>
                     <ul class="ops" style="list-style: none; padding: 0;">
-                        <li class="op">
-                            <input class="box" type="radio" id="ind" name="part" value="individual" required>
-                            <label class="radio-op" for="ind">Individual</label>
-                        </li>
-                        <li class="op">
-                            <input class="box" type="radio" id="organ" name="part" value="organisation">
-                            <label class="radio-op" for="organ">Organisation</label>
-                        </li>
-                        <li class="op">
-                            <input class="box" type="radio" id="busin" name="part" value="busin">
-                            <label class="radio-op" for="busin">Business</label>
-                        </li>
-                        <li class="op">
-                            <input class="box" type="radio" id="other" name="part" value="other">
-                            <label class="radio-op" for="other">Other</label>
-                        </li>
+                    <li class="op">
+                        <input class="box" type="radio" id="ind" name="part" value="individual" required>
+                        <label class="radio-op" for="ind">Individual</label>
+                    </li>
+                    <li class="op">
+                        <input class="box" type="radio" id="organ" name="part" value="organisation">
+                        <label class="radio-op" for="organ">Organisation</label>
+                    </li>
+                    <li class="op">
+                        <input class="box" type="radio" id="busin" name="part" value="busin">
+                        <label class="radio-op" for="busin">Business</label>
+                    </li>
+                    <li class="op"  >
+                        <input class="box" type="radio" id="other" name="part" value="other">
+                        <label class="radio-op" for="other">Other</label>
+                    </li>
                     </ul>
-                </div>
+                </p>
                 <p class="inside">
                     <label class="reason" for="reason">Purpose for contact: </label>
                     <textarea name="reason" id="reason" rows="3" cols="60" placeholder="I want to contact because..." required></textarea>
@@ -105,89 +105,94 @@
             </fieldset>
         </form>
     </main>
-
     <script>
     const form = document.getElementById("Personal");
-    const submitBtn = form.querySelector(".btn-submit");
-    const emailInput = document.getElementById("email");
-    const emailGroup = document.getElementById("email-group");
-    const emailError = document.getElementById("email-error");
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const submitBtn = form.querySelector(".btn-submit");
+  const emailInput = document.getElementById("email");
+  const emailGroup = document.getElementById("email-group");
+  const emailError = document.getElementById("email-error");
+  
+  // Standard Email Regex pattern
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    emailInput.addEventListener("blur", validateEmail);
+  emailInput.addEventListener("blur", validateEmail);
 
-    emailInput.addEventListener("input", () => {
-      if (emailGroup.classList.contains("invalid")) {
-        validateEmail();
-      }
-    });
+  // Check actively ONLY if they already messed up (so it clears instantly)
+  emailInput.addEventListener("input", () => {
+    if (emailGroup.classList.contains("invalid")) {
+      validateEmail();
+    }
+  });
 
-    function validateEmail() {
-      const value = emailInput.value.trim();
-      let isValid = false;
+  function validateEmail() {
+    const value = emailInput.value.trim();
+    let isValid = false;
 
-      if (value === "") {
-        emailGroup.classList.add("invalid");
-        emailError.textContent = "Email is required to reach out!";
-      } else if (!emailRegex.test(value)) {
-        emailGroup.classList.add("invalid");
-        emailError.textContent = "Oops! Please enter a valid email address.";
-      } else {
-        emailGroup.classList.remove("invalid");
-        emailError.textContent = "";
-        isValid = true;
-      }
-      return isValid;
+    if (value === "") {
+      emailGroup.classList.add("invalid");
+      emailError.textContent = "Email is required to reach out!";
+    } else if (!emailRegex.test(value)) {
+      emailGroup.classList.add("invalid");
+      emailError.textContent = "Oops! Please enter a valid email address.";
+    } else {
+      emailGroup.classList.remove("invalid");
+      emailError.textContent = "";
+      isValid = true;
+    }
+    return isValid;
+  }
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault(); // Stop the Formspree redirect
+
+    // Final safety check: Don't submit if the email is broken
+    if (!validateEmail()) {
+      emailInput.focus(); // Jump them back to the email field
+      return; 
     }
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
+    // UX: Change button to show it's working
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
 
-      if (!validateEmail()) {
-        emailInput.focus();
-        return; 
-      }
+    const formData = new FormData(form);
 
-      const originalBtnText = submitBtn.textContent;
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
-
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json' 
-          }
-        });
-
-        if (response.ok) {
-          form.reset();
-          submitBtn.textContent = "Sent Successfully! 🚀";
-          submitBtn.style.backgroundColor = "#4caf50";
-          submitBtn.style.borderColor = "#4caf50";
-        } else {
-          submitBtn.textContent = "Oops! Error sending.";
+    try {
+      // Send the data silently in the background
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json' 
         }
-      } catch (error) {
-        submitBtn.textContent = "Network Error!";
+      });
+
+      if (response.ok) {
+        // Success!
+        form.reset();
+        submitBtn.textContent = "Sent Successfully! 🚀";
+        submitBtn.style.backgroundColor = "#4caf50"; // Turn it green
+        submitBtn.style.borderColor = "#4caf50";
+      } else {
+        submitBtn.textContent = "Oops! Error sending.";
       }
-      setTimeout(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.style.backgroundColor = ""; 
-        submitBtn.style.borderColor = "";
-        submitBtn.disabled = false;
-      }, 3000);
-    });
+    } catch (error) {
+      submitBtn.textContent = "Network Error!";
+    }
+    setTimeout(() => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.style.backgroundColor = ""; 
+      submitBtn.style.borderColor = "";
+      submitBtn.disabled = false;
+    }, 3000);
+  });
     </script>
     
     <hr class="lhr">
     <footer class="footers">
         <h3 class="devt">Designed and built by Ucoder69</h3>
-        <p class="footer-text">&copy; 2026 Ucoder69</p>
+        <p class="footer-text">&copy; 2026 Ucoder69 </p>
         <div class="link-panel">
             <ul class="footer-list">
                 <li class="mail"><a href="https://linkedin.com/in/suparnodey/" target="_blank" rel="noopener"><img src="./images/LinkedIn_white.png" alt="LinkedIn"></a></li>
@@ -197,5 +202,5 @@
         </div>
     </footer>
     <script src="script.v2.js" defer></script>
-</body>
+    </body>
 </html>
