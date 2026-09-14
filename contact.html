@@ -17,10 +17,24 @@
     <link rel="preload" href="./fonts/roboto-v50-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/noto-sans-v42-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/pt-mono-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        /* Red bar for error state */
+        #email-group.invalid input {
+            border-color: #e53935 !important;
+        }
+        #email-group.invalid .error-msg {
+            color: #e53935;
+        }
+
+        /* Green bar for success/valid state */
+        #email-group.valid input {
+            border-color: #4caf50 !important;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Elements moved inside body -->
     <div id="loader">
         <div class="bouncing-dots">
             <span></span><span></span><span></span>
@@ -65,13 +79,11 @@
                     <label for="name">Full Name</label>
                     <input type="text" name="name" id="name" required autofocus autocomplete="on">
                 </p>
-                <!-- Added id="email-group" so JS target exists -->
                 <p class="inside" id="email-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required autocomplete="on">
                     <span class="error-msg" id="email-error"></span>
                 </p>
-                <!-- Kept original nesting structure -->
                 <p class="inside3">
                     <p class="label">Profile:</p>
                     <ul class="ops" style="list-style: none; padding: 0;">
@@ -105,88 +117,90 @@
             </fieldset>
         </form>
     </main>
+
     <script>
     const form = document.getElementById("Personal");
-  const submitBtn = form.querySelector(".btn-submit");
-  const emailInput = document.getElementById("email");
-  const emailGroup = document.getElementById("email-group");
-  const emailError = document.getElementById("email-error");
+    const submitBtn = form.querySelector(".btn-submit");
+    const emailInput = document.getElementById("email");
+    const emailGroup = document.getElementById("email-group");
+    const emailError = document.getElementById("email-error");
   
-  // Standard Email Regex pattern
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  emailInput.addEventListener("blur", validateEmail);
+    // 1. Validate only when user tabs out (blur)
+    emailInput.addEventListener("blur", validateEmail);
 
-  // Check actively ONLY if they already messed up (so it clears instantly)
-  emailInput.addEventListener("input", () => {
-    if (emailGroup.classList.contains("invalid")) {
-      validateEmail();
-    }
-  });
-
-  function validateEmail() {
-    const value = emailInput.value.trim();
-    let isValid = false;
-
-    if (value === "") {
-      emailGroup.classList.add("invalid");
-      emailError.textContent = "Email is required to reach out!";
-    } else if (!emailRegex.test(value)) {
-      emailGroup.classList.add("invalid");
-      emailError.textContent = "Oops! Please enter a valid email address.";
-    } else {
+    // 2. Stop showing errors the instant the user starts editing/typing
+    emailInput.addEventListener("input", () => {
       emailGroup.classList.remove("invalid");
+      emailGroup.classList.remove("valid");
       emailError.textContent = "";
-      isValid = true;
-    }
-    return isValid;
-  }
+    });
 
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault(); // Stop the Formspree redirect
+    function validateEmail() {
+      const value = emailInput.value.trim();
 
-    // Final safety check: Don't submit if the email is broken
-    if (!validateEmail()) {
-      emailInput.focus(); // Jump them back to the email field
-      return; 
-    }
-
-    // UX: Change button to show it's working
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    const formData = new FormData(form);
-
-    try {
-      // Send the data silently in the background
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json' 
-        }
-      });
-
-      if (response.ok) {
-        // Success!
-        form.reset();
-        submitBtn.textContent = "Sent Successfully! 🚀";
-        submitBtn.style.backgroundColor = "#4caf50"; // Turn it green
-        submitBtn.style.borderColor = "#4caf50";
+      if (value === "") {
+        emailGroup.classList.add("invalid");
+        emailGroup.classList.remove("valid");
+        emailError.textContent = "Email is required to reach out!";
+        return false;
+      } else if (!emailRegex.test(value)) {
+        emailGroup.classList.add("invalid");
+        emailGroup.classList.remove("valid");
+        emailError.textContent = "Oops! Please enter a valid email address.";
+        return false;
       } else {
-        submitBtn.textContent = "Oops! Error sending.";
+        // Valid email on blur -> Show green state
+        emailGroup.classList.remove("invalid");
+        emailGroup.classList.add("valid");
+        emailError.textContent = "";
+        return true;
       }
-    } catch (error) {
-      submitBtn.textContent = "Network Error!";
     }
-    setTimeout(() => {
-      submitBtn.textContent = originalBtnText;
-      submitBtn.style.backgroundColor = ""; 
-      submitBtn.style.borderColor = "";
-      submitBtn.disabled = false;
-    }, 3000);
-  });
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return; 
+      }
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json' 
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          emailGroup.classList.remove("valid", "invalid");
+          submitBtn.textContent = "Sent Successfully! 🚀";
+          submitBtn.style.backgroundColor = "#4caf50";
+          submitBtn.style.borderColor = "#4caf50";
+        } else {
+          submitBtn.textContent = "Oops! Error sending.";
+        }
+      } catch (error) {
+        submitBtn.textContent = "Network Error!";
+      }
+      setTimeout(() => {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.style.backgroundColor = ""; 
+        submitBtn.style.borderColor = "";
+        submitBtn.disabled = false;
+      }, 3000);
+    });
     </script>
     
     <hr class="lhr">
