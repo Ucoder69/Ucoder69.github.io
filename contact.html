@@ -147,8 +147,15 @@
         return true;
       }
     }
-
+    const pageLoadTime = Date.now();
     form.addEventListener("submit", async function(e) {
+      const timeTakenSeconds = (Date.now() - pageLoadTime) / 1000;
+
+      // Reject if submitted in under 3 seconds (likely a bot)
+      if (timeTakenSeconds < 3) {
+        console.warn("Submission too fast. Blocked as potential bot.");
+        return;
+      }
       e.preventDefault();
 
     if (!validateEmail()) {
