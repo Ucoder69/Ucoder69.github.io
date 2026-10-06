@@ -105,7 +105,7 @@
                     <label class="reason" for="reason">Purpose for contact: </label>
                     <textarea name="reason" id="reason" rows="3" cols="60" placeholder="I want to contact because..." required></textarea>
                 </p>
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <div class="form-actions">
                     <button type="reset" class="btn-reset">Reset</button>
                     <button type="submit" class="btn-submit">Submit</button>
@@ -116,23 +116,27 @@
 
     <script>
     const form = document.getElementById("Personal");
+
+    if (form) {
     const submitBtn = form.querySelector(".btn-submit");
     const emailInput = document.getElementById("email");
     const emailGroup = document.getElementById("email-group");
-  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (emailInput && emailGroup) {
+      // Validate only on tab out (blur)
+      emailInput.addEventListener("blur", validateEmail);
 
-    // Validate only on tab out (blur)
-    emailInput.addEventListener("blur", validateEmail);
-
-    // Reset status styles immediately when user starts typing
-    emailInput.addEventListener("input", () => {
-      emailGroup.classList.remove("invalid", "valid");
-    });
+      // Reset status styles immediately when user starts typing
+      emailInput.addEventListener("input", () => {
+        emailGroup.classList.remove("invalid", "valid");
+      });
+    }
 
     function validateEmail() {
+      if (!emailInput || !emailGroup) return true;
       const value = emailInput.value.trim();
-
+  
       if (value === "" || !emailRegex.test(value)) {
         emailGroup.classList.add("invalid");
         emailGroup.classList.remove("valid");
@@ -147,48 +151,65 @@
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
 
-      if (!validateEmail()) {
-        emailInput.focus();
-        return; 
-      }
+    if (!validateEmail()) {
+      emailInput?.focus();
+      return; 
+    }
 
-      const originalBtnText = submitBtn.textContent;
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
 
-      const formData = new FormData(form);
+    // Safely extract URL to avoid DOM shadowing
+    const actionUrl = form.getAttribute("action");
+    const method = (form.getAttribute("method") || "POST").toUpperCase();
 
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json' 
-          }
-        });
+    // Convert FormData to clean JSON payload
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
 
-        if (response.ok) {
-          form.reset();
-          emailGroup.classList.remove("valid", "invalid");
-          submitBtn.textContent = "Sent Successfully! 🚀";
-          submitBtn.style.backgroundColor = "#4caf50";
-          submitBtn.style.borderColor = "#4caf50";
+    try {
+      const response = await fetch(actionUrl, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const responseData = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        form.reset();
+        emailGroup?.classList.remove("valid", "invalid");
+        submitBtn.textContent = "Sent Successfully! 🚀";
+        submitBtn.style.backgroundColor = "#4caf50";
+        submitBtn.style.borderColor = "#4caf50";
+      } else {
+        console.error("Formspree Response Error:", response.status, responseData);
+        
+        // Show specific error if returned by server
+        if (responseData.errors && responseData.errors.length > 0) {
+          submitBtn.textContent = responseData.errors.map(err => err.message).join(", ");
         } else {
-          submitBtn.textContent = "Oops! Error sending.";
+          submitBtn.textContent = `Error ${response.status}: Failed to send`;
         }
-      } catch (error) {
-        console.error("Form error:", error);
-        submitBtn.textContent = "Network Error!";
       }
+    } catch (error) {
+      console.error("Network or JavaScript Error:", error);
+      submitBtn.textContent = "Network Error!";
+    }
 
-      setTimeout(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.style.backgroundColor = ""; 
-        submitBtn.style.borderColor = "";
-        submitBtn.disabled = false;
-      }, 3000);
-    });
-    </script>
+    setTimeout(() => {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.style.backgroundColor = ""; 
+      submitBtn.style.borderColor = "";
+      submitBtn.disabled = false;
+        }, 4000);
+      });
+    }
+      </script>
     
     <hr class="lhr">
     <footer class="footers">
