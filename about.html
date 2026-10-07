@@ -181,32 +181,28 @@
     const barHard = document.getElementById("bar-hard");
 
     try {
-        const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
-        if (!response.ok) throw new Error("Network response failed");
+        const response = await fetch(`https://leetcode-api-fowl.vercel.app/${username}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
 
-        if (data.status === "success") {
-            totalSolvedEl.textContent = data.totalSolved;
-            rankingEl.textContent = `Rank: #${data.ranking.toLocaleString()}`;
-            
-            easyEl.textContent = `${data.easySolved} / ${data.totalEasy}`;
-            mediumEl.textContent = `${data.mediumSolved} / ${data.totalMedium}`;
-            hardEl.textContent = `${data.hardSolved} / ${data.totalHard}`;
+        totalSolvedEl.textContent = data.totalSolved;
+        rankingEl.textContent = `Rank: #${data.ranking.toLocaleString()}`;
+        
+        easyEl.textContent = `${data.easySolved} / ${data.totalEasy}`;
+        mediumEl.textContent = `${data.mediumSolved} / ${data.totalMedium}`;
+        hardEl.textContent = `${data.hardSolved} / ${data.totalHard}`;
 
-            const easyPct = (data.easySolved / data.totalEasy) * 100;
-            const mediumPct = (data.mediumSolved / data.totalMedium) * 100;
-            const hardPct = (data.hardSolved / data.totalHard) * 100;
+        const easyPct = (data.easySolved / data.totalEasy) * 100;
+        const mediumPct = (data.mediumSolved / data.totalMedium) * 100;
+        const hardPct = (data.hardSolved / data.totalHard) * 100;
 
-            setTimeout(() => {
-                barEasy.style.width = `${easyPct}%`;
-                barMedium.style.width = `${mediumPct}%`;
-                barHard.style.width = `${hardPct}%`;
-            }, 200);
-        } else {
-            totalSolvedEl.textContent = "N/A";
-            rankingEl.textContent = "User not found";
-        }
+        setTimeout(() => {
+            barEasy.style.width = `${easyPct}%`;
+            barMedium.style.width = `${mediumPct}%`;
+            barHard.style.width = `${hardPct}%`;
+        }, 200);
+
     } catch (error) {
         console.error("LeetCode API Error:", error);
         totalSolvedEl.textContent = "Err";
