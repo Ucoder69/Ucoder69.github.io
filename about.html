@@ -164,5 +164,54 @@
     </div>
     </footer>
     <script src="script.v2.js" defer></script>
+    <script>
+         document.addEventListener("DOMContentLoaded", () => {
+    fetchLeetCodeStats("ucoder91");
+    });
+
+    async function fetchLeetCodeStats(username="ucoder91") {
+    const totalSolvedEl = document.getElementById("lc-total-solved");
+    const rankingEl = document.getElementById("lc-ranking");
+    const easyEl = document.getElementById("lc-easy");
+    const mediumEl = document.getElementById("lc-medium");
+    const hardEl = document.getElementById("lc-hard");
+
+    const barEasy = document.getElementById("bar-easy");
+    const barMedium = document.getElementById("bar-medium");
+    const barHard = document.getElementById("bar-hard");
+
+    try {
+        const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
+        if (!response.ok) throw new Error("Network response failed");
+
+        const data = await response.json();
+
+        if (data.status === "success") {
+            totalSolvedEl.textContent = data.totalSolved;
+            rankingEl.textContent = `Rank: #${data.ranking.toLocaleString()}`;
+            
+            easyEl.textContent = `${data.easySolved} / ${data.totalEasy}`;
+            mediumEl.textContent = `${data.mediumSolved} / ${data.totalMedium}`;
+            hardEl.textContent = `${data.hardSolved} / ${data.totalHard}`;
+
+            const easyPct = (data.easySolved / data.totalEasy) * 100;
+            const mediumPct = (data.mediumSolved / data.totalMedium) * 100;
+            const hardPct = (data.hardSolved / data.totalHard) * 100;
+
+            setTimeout(() => {
+                barEasy.style.width = `${easyPct}%`;
+                barMedium.style.width = `${mediumPct}%`;
+                barHard.style.width = `${hardPct}%`;
+            }, 200);
+        } else {
+            totalSolvedEl.textContent = "N/A";
+            rankingEl.textContent = "User not found";
+        }
+    } catch (error) {
+        console.error("LeetCode API Error:", error);
+        totalSolvedEl.textContent = "Err";
+        rankingEl.textContent = "Unable to load";
+    }}
+    </script>
 </body>
 </html>
