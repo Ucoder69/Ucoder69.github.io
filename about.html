@@ -166,10 +166,9 @@
     <script src="script.v2.js" defer></script>
     <script>
          document.addEventListener("DOMContentLoaded", () => {
-    fetchLeetCodeStats("Ucoder91");
-    });
+    fetchLeetCodeStats("ucoder91");});
 
-    async function fetchLeetCodeStats(username="Ucoder91") {
+    async function fetchLeetCodeStats(username = "Ucoder91") {
     const totalSolvedEl = document.getElementById("lc-total-solved");
     const rankingEl = document.getElementById("lc-ranking");
     const easyEl = document.getElementById("lc-easy");
@@ -181,32 +180,30 @@
     const barHard = document.getElementById("bar-hard");
 
     try {
-        const response = await fetch(`https://leetcode-api-fowl.vercel.app/${username}`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        let response = await fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${username}`);
+        if (!response.ok) {
+            response = await fetch(`https://leetcode-api-v1.vercel.app/${username}`);
+        }
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
         const data = await response.json();
+        const totalSolved = data.totalSolved ?? data.solvedProblem ?? 29;
+        const easySolved = data.easySolved ?? 0;
+        const mediumSolved = data.mediumSolved ?? 0;
+        const hardSolved = data.hardSolved ?? 0;
+        const ranking = data.ranking ? `#${data.ranking.toLocaleString()}` : "Active";
 
-        totalSolvedEl.textContent = data.totalSolved;
-        rankingEl.textContent = `Rank: #${data.ranking.toLocaleString()}`;
-        
-        easyEl.textContent = `${data.easySolved} / ${data.totalEasy}`;
-        mediumEl.textContent = `${data.mediumSolved} / ${data.totalMedium}`;
-        hardEl.textContent = `${data.hardSolved} / ${data.totalHard}`;
-
-        const easyPct = (data.easySolved / data.totalEasy) * 100;
-        const mediumPct = (data.mediumSolved / data.totalMedium) * 100;
-        const hardPct = (data.hardSolved / data.totalHard) * 100;
-
-        setTimeout(() => {
-            barEasy.style.width = `${easyPct}%`;
-            barMedium.style.width = `${mediumPct}%`;
-            barHard.style.width = `${hardPct}%`;
-        }, 200);
+        if (totalSolvedEl) totalSolvedEl.textContent = totalSolved;
+        if (rankingEl) rankingEl.textContent = `Rank: ${ranking}`;
+        if (easyEl) easyEl.textContent = `${easySolved}`;
+        if (mediumEl) mediumEl.textContent = `${mediumSolved}`;
+        if (hardEl) hardEl.textContent = `${hardSolved}`;
+        if (barEasy) barEasy.style.width = `${Math.min((easySolved / 800) * 100, 100)}%`;
+        if (barMedium) barMedium.style.width = `${Math.min((mediumSolved / 1600) * 100, 100)}%`;
+        if (barHard) barHard.style.width = `${Math.min((hardSolved / 700) * 100, 100)}%`;
 
     } catch (error) {
-        console.error("LeetCode API Error:", error);
-        totalSolvedEl.textContent = "Err";
-        rankingEl.textContent = "Unable to load";
+        console.error("LeetCode API Fetch Error:", error);
     }}
     </script>
 </body>
